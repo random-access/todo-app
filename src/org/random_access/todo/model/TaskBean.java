@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Named("TaskBean")
 @RequestScoped
@@ -11,8 +13,14 @@ public class TaskBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@NotNull(message = "Bezeichnung muss eingegeben werden")
+	@Size(max = 50, message = "Bezeichnung darf maximal 50 Zeichen lang sein")
 	private String name;
+	
+	@NotNull(message = "Beschreibung muss eingegeben werden")
+	@Size(max = 255, message = "Beschreibung darf maximal 255 Zeichen lang sein")
 	private String description;
+	
 	private Project project;
 	
 	public TaskBean() {

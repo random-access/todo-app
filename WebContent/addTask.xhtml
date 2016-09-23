@@ -13,9 +13,11 @@
 		<h:form class="form-bg">
 			<h:outputLabel value="Name" for="name" />
 			<h:inputText id="name" value="#{TaskBean.name}" p:placeholder="Bitte Name eingeben"/>
+			<h:message for="name" errorClass="status-block"/>
 			
 			<h:outputLabel value="Beschreibung" for="description" />
 			<h:inputTextarea id="description" value="#{TaskBean.description}" p:placeholder="Bitte Beschreibung eingeben" />
+			<h:message for="description" errorClass="status-block"/>
 			
 			<h:outputLabel value="Projekt" for="project" />
 			<h:selectOneMenu id="project" value="#{TaskBean.project}">
