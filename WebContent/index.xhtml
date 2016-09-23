@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+	<ui:composition template="/template.xhtml">
+		<ui:define name="center">
+			<h:dataTable var="task" value="#{TaskController.tasks}">
+				<h:column>
+					<f:facet name="header">Task</f:facet>
+					<div>#{task.name}</div>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Beschreibung</f:facet>
+					<div>#{task.description}</div>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Projekt</f:facet>
+					<div>
+						<h:outputText value="#{task.project}" converter="ProjectConverter" />					
+					</div>
+				</h:column>
+			</h:dataTable>
+		</ui:define>
+	</ui:composition>
+</html>
