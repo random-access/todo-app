@@ -4,7 +4,27 @@
  <navigation-rule>
   <from-view-id>/addTask.xhtml</from-view-id>
   <navigation-case>
-   <from-outcome>success</from-outcome>
+   <from-outcome>add_success</from-outcome>
+   <to-view-id>/index.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/index.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>del_success</from-outcome>
+   <to-view-id>/index.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>edit</from-outcome>
+   <to-view-id>/editTask.xhtml</to-view-id>
+   <redirect include-view-params="true"/>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/editTask.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>upd_success</from-outcome>
    <to-view-id>/index.xhtml</to-view-id>
    <redirect/>
   </navigation-case>

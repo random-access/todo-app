@@ -71,18 +71,38 @@ textarea {
 	font-family: sans-serif;
 }
 
-input[type=submit] {
+.btn {
     width: 200px;
-    background-color: #5485c4;
     color: white;
     padding: 10px;
-    margin: 10px 0;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
-input[type=submit]:hover {
+.btn-sm {
+    width: 150px;
+    color: white;
+    padding: 2px;
+    margin: 0px 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-danger {
+	background-color: #cc0000;
+}
+
+.btn-danger:hover {
+	background-color: #a40000;
+}
+
+.btn-success {
+	background-color: #5485c4;
+}
+
+.btn-success:hover {
     background-color: #3465a4;
 }
 
@@ -129,6 +149,10 @@ th {
 
 tr:nth-child(even) {
 	background-color: #eee;
+}
+
+.fixedwidth-330 {
+	width: 330px;
 }
 
 html {

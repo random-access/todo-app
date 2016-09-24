@@ -4,12 +4,14 @@ import org.random_access.todo.model.Project;
 
 public class Task {
 	
+	private int id;
 	private String name;
 	private String description;
 	private Project project;
 	
-	public Task(String name, String description, Project project) {
+	public Task(int id, String name, String description, Project project) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.project = project;
@@ -37,6 +39,14 @@ public class Task {
 	
 	public void setProject(Project project) {
 		this.project = project;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

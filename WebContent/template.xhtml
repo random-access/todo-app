@@ -4,20 +4,26 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"> 
 
-<h:head>
-	<h:outputStylesheet library="grey" name="css/styles.css"></h:outputStylesheet>
-</h:head> 
-<body> 
-	<div id="content">
-		<div class="top" id="top">
-			<ui:insert name="top">TODO APP</ui:insert>
-		</div>
-		<div class="center" id="center">
-			<ui:insert name="center">CENTER</ui:insert>
-		</div>
-		<div class="bottom" id="bottom">
-			<ui:insert name="bottom">© 2016 Monika Schrenk</ui:insert>
-		</div>
-	</div>
-</body> 
+	<h:head>
+		<h:outputStylesheet library="blue" name="css/styles.css"></h:outputStylesheet>
+	</h:head>
+	 
+	<body> 
+		<f:view>
+			<ui:insert name="metadata"/>
+			
+			<div id="content">
+				<div class="top" id="top">
+					<ui:insert name="top">TODO APP</ui:insert>
+				</div>
+				<div class="center" id="center">
+					<ui:insert name="center">CENTER</ui:insert>
+				</div>
+				<div class="bottom" id="bottom">
+					<ui:insert name="bottom">© 2016 Monika Schrenk</ui:insert>
+				</div>
+			</div>
+		</f:view>
+	</body>
+	 
 </html>

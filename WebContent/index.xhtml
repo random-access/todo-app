@@ -11,7 +11,11 @@
 			<ui:include src="/navigation.xhtml" />
 		</ui:define>
 		<ui:define name="center">
-			<h:dataTable var="task" value="#{TaskController.tasks}">
+			<h:dataTable var="task" value="#{TaskController.tasks}" columnClasses="varwidth,varwidth,varwidth,fixedwidth-330">
+				<h:column>
+					<f:facet name="header">ID</f:facet>
+					<div>#{task.id}</div>
+				</h:column>
 				<h:column>
 					<f:facet name="header">Task</f:facet>
 					<div>#{task.name}</div>
@@ -26,10 +30,24 @@
 						<h:outputText value="#{task.project}" converter="ProjectConverter" />					
 					</div>
 				</h:column>
+				<h:column>
+					<f:facet name="header">Aktionen</f:facet>
+					<div>
+						<h:form>
+							<h:button class="btn-sm btn-success" outcome="edit" value="Bearbeiten">
+								<f:param name="id" value="#{task.id}"/>
+								<f:param name="name" value="#{task.name}"/>
+								<f:param name="description" value="#{task.description}"/>
+								<f:param name="project" value="#{task.project}"/>
+							</h:button>
+							<h:commandButton class="btn-sm btn-danger" action="#{TaskController.deleteTask(task)}" value="Löschen"/>					
+						</h:form>
+					</div>
+				</h:column>
 			</h:dataTable>
 			<h:form>
-				<div style="text-align: center;">
-					<h:commandButton  action="addTask" value="Task hinzufügen"/>
+				<div style="text-align: center; padding-bottom: 20px;">
+					<h:commandButton class="btn btn-success" action="addTask" value="Task hinzufügen"/>
 				</div>
 			</h:form>
 		</ui:define>

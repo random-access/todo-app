@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -15,7 +15,7 @@ import org.random_access.todo.store.Task;
 import org.random_access.todo.store.TaskHandler;
 
 @Named("TaskController")
-@RequestScoped
+@SessionScoped
 public class TaskController implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -27,9 +27,15 @@ public class TaskController implements Serializable{
 	private TaskHandler taskHandler;
 	
 	public String addTask() {
-		System.out.println("Form for adding task submitted");
-		taskHandler.addTask(taskBean);
-		return "success";
+		return taskHandler.addTask(taskBean) ? "add_success" : "add_failure";
+	}
+	
+	public String deleteTask(Task task) {
+		return taskHandler.deleteTask(task) ? "del_success" : "del_failure";	
+	}
+	
+	public String updateDiesenVerficktenTask() {
+		return taskHandler.updateTask(taskBean) ? "upd_success" : "upd_failure";
 	}
 	
 	public List<SelectItem> getProjects() {

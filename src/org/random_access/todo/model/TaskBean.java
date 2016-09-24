@@ -12,6 +12,8 @@ import javax.validation.constraints.Size;
 public class TaskBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	private int id;
 
 	@NotNull(message = "Bezeichnung muss eingegeben werden")
 	@Size(max = 50, message = "Bezeichnung darf maximal 50 Zeichen lang sein")
@@ -23,8 +25,12 @@ public class TaskBean implements Serializable {
 	
 	private Project project;
 	
-	public TaskBean() {
-		System.out.println("New TaskBean created!");
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	public String getName() {
@@ -49,8 +55,7 @@ public class TaskBean implements Serializable {
 	
 	public void setProject(Project project) {
 		this.project = project;
-	}
-	
+	}	
 	
 
 }
