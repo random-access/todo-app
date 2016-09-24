@@ -3,30 +3,32 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:jsf="http://xmlns.jcp.org/jsf">
       
 <ui:composition template="/template.xhtml">
-	<ui:define name="top">TODO APP</ui:define>
+	<ui:define name="top">
+		<ui:include src="/navigation.xhtml" />
+	</ui:define>
 	<ui:define name="center">
 		<h2>Neuen Task anlegen:</h2>
 		<h:form class="form-bg">
 			<h:outputLabel value="Name" for="name" />
-			<h:inputText id="name" value="#{TaskBean.name}" p:placeholder="Bitte Name eingeben"/>
+			<h:inputText id="name" value="#{TaskBean.name}" pt:placeholder="Bitte Name eingeben"/>
 			<h:message for="name" errorClass="status-block"/>
 			
 			<h:outputLabel value="Beschreibung" for="description" />
-			<h:inputTextarea id="description" value="#{TaskBean.description}" p:placeholder="Bitte Beschreibung eingeben" />
+			<h:inputTextarea id="description" value="#{TaskBean.description}" pt:placeholder="Bitte Beschreibung eingeben" />
 			<h:message for="description" errorClass="status-block"/>
 			
 			<h:outputLabel value="Projekt" for="project" />
 			<h:selectOneMenu id="project" value="#{TaskBean.project}">
 				<f:selectItems value="#{TaskController.projects}"></f:selectItems>
 			</h:selectOneMenu>
-			
-			<h:commandButton actionListener="#{ TaskController.addTask }" value="Speichern" />
+			<div style="text-align: center;">
+				<h:commandButton action="#{ TaskController.addTask() }" value="Speichern" />
+			</div>
 		</h:form>
-		
 	</ui:define>
 	<ui:define name="bottom">© 2016 Monika Schrenk</ui:define>
 </ui:composition>

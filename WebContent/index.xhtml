@@ -3,27 +3,35 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:jsf="http://xmlns.jcp.org/jsf">
 
 	<ui:composition template="/template.xhtml">
+		<ui:define name="top">
+			<ui:include src="/navigation.xhtml" />
+		</ui:define>
 		<ui:define name="center">
 			<h:dataTable var="task" value="#{TaskController.tasks}">
-				<h:column>
+				<p:column>
 					<f:facet name="header">Task</f:facet>
 					<div>#{task.name}</div>
-				</h:column>
-				<h:column>
+				</p:column>
+				<p:column>
 					<f:facet name="header">Beschreibung</f:facet>
 					<div>#{task.description}</div>
-				</h:column>
-				<h:column>
+				</p:column>
+				<p:column>
 					<f:facet name="header">Projekt</f:facet>
 					<div>
 						<h:outputText value="#{task.project}" converter="ProjectConverter" />					
 					</div>
-				</h:column>
+				</p:column>
 			</h:dataTable>
+			<h:form>
+				<div style="text-align: center;">
+					<h:commandButton  action="addTask" value="Task hinzufügen"/>
+				</div>
+			</h:form>
 		</ui:define>
 	</ui:composition>
 </html>
