@@ -8,6 +8,10 @@
    <to-view-id>/index.xhtml</to-view-id>
    <redirect/>
   </navigation-case>
+  <navigation-case>
+   <from-outcome>add_abort</from-outcome>
+   <to-view-id>/index.xhtml</to-view-id>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
   <from-view-id>/index.xhtml</from-view-id>
@@ -32,6 +36,10 @@
    <from-outcome>upd_success</from-outcome>
    <to-view-id>/index.xhtml</to-view-id>
    <redirect/>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>upd_abort</from-outcome>
+   <to-view-id>/index.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
  <application/>

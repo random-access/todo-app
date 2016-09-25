@@ -28,6 +28,8 @@
 			<h:message for="project" errorClass="status-block"/>
 			
 			<div style="text-align: center; padding-top: 10px">
+				<h:button class="btn btn-danger" outcome="add_abort" value="Abbrechen" />
+				&nbsp;
 				<h:commandButton class="btn btn-success" action="#{ taskHandler.addTask() }" value="Speichern" />
 			</div>
 	

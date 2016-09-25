@@ -23,11 +23,8 @@
 	</ui:define>
 	
 	<ui:define name="center">
-		<h2>Task bearbeiten:</h2>
+		<h2>Task #{currentTask.id} bearbeiten:</h2>
 		<h:form class="form-bg"> 
-			<h:outputLabel value="#{currentTask.id}"/>
-			&nbsp;
-		
 			<h:outputLabel value="Name" for="name" />
 			<h:inputText id="name" value="#{currentTask.name}" pt:placeholder="Bitte Name eingeben" styleClass="elem-fullwidth"/>
 			<h:message for="name" errorClass="status-block"/>
@@ -43,7 +40,9 @@
 			<h:message for="project" errorClass="status-block"/>
 			
 			<div style="text-align: center; padding-top: 10px">
-				<h:commandButton class="btn btn-success" action="#{ taskHandler.updateTask(currentTask) }" value="Speichern" />
+				<h:button class="btn btn-danger" outcome="upd_abort" value="Abbrechen" />
+				&nbsp;
+				<h:commandButton class="btn btn-success" action="#{ taskHandler.updateTask(currentTask) }" value="Aktualisieren" />
 			</div>
 		</h:form>
 	</ui:define>
