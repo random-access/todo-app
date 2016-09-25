@@ -20,6 +20,11 @@
    <to-view-id>/editTask.xhtml</to-view-id>
    <redirect include-view-params="true"/>
   </navigation-case>
+  <navigation-case>
+   <from-outcome>add</from-outcome>
+   <to-view-id>/addTask.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
   <from-view-id>/editTask.xhtml</from-view-id>
