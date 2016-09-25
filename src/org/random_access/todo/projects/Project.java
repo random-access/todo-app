@@ -1,14 +1,19 @@
 package org.random_access.todo.projects;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.enterprise.context.ConversationScoped;
 import javax.inject.Named;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.random_access.todo.tasks.Task;
 
 @Named("currentProject")
 @ConversationScoped
@@ -23,6 +28,9 @@ public class Project implements Serializable {
 	private int id;
 	
 	private String name;
+	
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="project")
+	private List<Task> tasks;
 
 	public int getId() {
 		return id;
@@ -38,6 +46,14 @@ public class Project implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public List<Task> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
 	}
 
 	// Equals (& HashCode) are needed for currentSelection match list of items
