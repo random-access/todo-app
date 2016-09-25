@@ -14,7 +14,7 @@
 		<h2>Neuen Task anlegen:</h2>
 		<h:form class="form-bg">
 			<h:outputLabel value="Name" for="name" />
-			<h:inputText id="name" value="#{currentTask.name}" pt:placeholder="Bitte Name eingeben"/>
+			<h:inputText id="name" value="#{currentTask.name}" pt:placeholder="Bitte Name eingeben" styleClass="elem-fullwidth"/>
 			<h:message for="name" errorClass="status-block"/>
 			
 			<h:outputLabel value="Beschreibung" for="description" />
@@ -22,7 +22,7 @@
 			<h:message for="description" errorClass="status-block"/>
 			
 			<h:outputLabel value="Projekt" for="project" />
-			<h:selectOneMenu id="project" value="#{currentTask.project}" converter="ProjectConverter">
+			<h:selectOneMenu id="project" value="#{currentTask.project}" converter="ProjectConverter" styleClass="elem-fullwidth">
 				<f:selectItems value="#{projectHandler.getProjectSelection()}"></f:selectItems>
 			</h:selectOneMenu>
 			<h:message for="project" errorClass="status-block"/>

@@ -2,7 +2,7 @@ package org.random_access.todo.projects;
 
 import java.io.Serializable;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.ConversationScoped;
 import javax.inject.Named;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Named("currentProject")
-@RequestScoped
+@ConversationScoped
 @Entity
 @Table(name = "projects")
 public class Project implements Serializable {
@@ -71,6 +71,11 @@ public class Project implements Serializable {
 		return true;
 	}
 	
-
+	public Project cloneProject() {
+		Project clone = new Project();
+		clone.id = this.id;
+		clone.name = this.name;
+		return clone;
+	}
 
 }

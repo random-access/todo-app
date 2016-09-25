@@ -11,7 +11,7 @@
 			<ui:include src="/navigation.xhtml" />
 		</ui:define>
 		<ui:define name="center">
-			<h:dataTable var="task" value="#{taskHandler.tasks}" columnClasses="varwidth,varwidth,varwidth,varwidth">
+			<h:dataTable var="task" value="#{taskHandler.tasks}" columnClasses="varwidth,varwidth,varwidth,varwidth,width-200-px">
 				<h:column>
 					<f:facet name="header">ID</f:facet>
 					<div>#{task.id}</div>

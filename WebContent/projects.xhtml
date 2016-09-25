@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+	<ui:composition template="/template.xhtml">
+		<ui:define name="top">
+			<ui:include src="/navigation.xhtml" />
+		</ui:define>
+		<ui:define name="center">
+			<h:messages errorClass="error-list" globalOnly="true"/>
+			&nbsp;
+			<h:form class="form-bg">
+				<h:outputLabel value="Projekt hinzufügen"/>
+				<h:inputText value="#{currentProject.name}" pt:placeholder="Bitte Name eingeben" styleClass="elem-inline"/>
+				<h:commandButton class="btn btn-sm btn-success" action="#{ projectHandler.addProject() }" value="Speichern" />
+			</h:form>
+			&nbsp;
+			<h3>Gespeicherte Projekte</h3>
+			<h:dataTable var="project" value="#{projectHandler.projects}" columnClasses="varwidth,varwidth,width-100-px">
+				<h:column>
+					<f:facet name="header">ID</f:facet>
+					<div>#{project.id}</div>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Projekt</f:facet>
+					<div>#{project.name}</div>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Aktionen</f:facet>
+					<div>
+						<h:form>
+							<h:commandButton id="delete_btn" class="btn-sm btn-danger" action="#{projectHandler.deleteProject(project)}" value="Löschen"/>					
+						</h:form>
+					</div>
+				</h:column>
+			</h:dataTable>
+		</ui:define>
+	</ui:composition>
+</html>

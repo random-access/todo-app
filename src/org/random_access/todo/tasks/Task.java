@@ -65,7 +65,8 @@ public class Task implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-
+	
+	// !this is only a shallow copy as project is not cloned
 	public Task cloneTask() {
 		Task clone = new Task();
 		clone.id = this.id;
