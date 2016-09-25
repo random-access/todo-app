@@ -11,26 +11,26 @@
 		<ui:include src="/navigation.xhtml" />
 	</ui:define>
 	<ui:define name="center">
-		<h2>Neuen Task anlegen:</h2>
+		<h2>#{msg['add-task']}</h2>
 		<h:form class="form-bg">
-			<h:outputLabel value="Name" for="name" />
-			<h:inputText id="name" value="#{currentTask.name}" pt:placeholder="Bitte Name eingeben" styleClass="elem-fullwidth"/>
+			<h:outputLabel value="#{msg['name']}" for="name" />
+			<h:inputText id="name" value="#{currentTask.name}" pt:placeholder="#{msg['name-hint']}" styleClass="elem-fullwidth"/>
 			<h:message for="name" errorClass="status-block"/>
 			
-			<h:outputLabel value="Beschreibung" for="description" />
-			<h:inputTextarea id="description" value="#{currentTask.description}" pt:placeholder="Bitte Beschreibung eingeben" />
+			<h:outputLabel value="#{msg['description']}" for="description" />
+			<h:inputTextarea id="description" value="#{currentTask.description}" pt:placeholder="#{msg['description-hint']}" />
 			<h:message for="description" errorClass="status-block"/>
 			
-			<h:outputLabel value="Projekt" for="project" />
+			<h:outputLabel value="#{msg['project']}" for="project" />
 			<h:selectOneMenu id="project" value="#{currentTask.project}" converter="ProjectConverter" styleClass="elem-fullwidth">
 				<f:selectItems value="#{projectHandler.getProjectSelection()}"></f:selectItems>
 			</h:selectOneMenu>
 			<h:message for="project" errorClass="status-block"/>
 			
 			<div style="text-align: center; padding-top: 10px">
-				<h:button class="btn btn-danger" outcome="add_abort" value="Abbrechen" />
+				<h:button class="btn btn-danger" outcome="add_abort" value="#{msg['abort']}" />
 				&nbsp;
-				<h:commandButton class="btn btn-success" action="#{ taskHandler.addTask() }" value="Speichern" />
+				<h:commandButton class="btn btn-success" action="#{ taskHandler.addTask() }" value="#{msg['save']}" />
 			</div>
 	
 		</h:form>

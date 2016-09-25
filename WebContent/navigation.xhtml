@@ -6,8 +6,12 @@
 
 	<h:form>
 		<h:outputText class="branding" value="TODO APP" />
-		<h:outputLink class="menu-entry" value="index.jsf">Tasks</h:outputLink>
-		<h:outputLink class="menu-entry" value="projects.jsf">Projekte</h:outputLink>
+		<h:outputLink class="menu-entry" value="index.jsf">#{msg['tasks']}</h:outputLink>
+		<h:outputLink class="menu-entry" value="projects.jsf">#{msg['projects']}</h:outputLink>
+		<div style="float:right;">
+			<h:commandButton styleClass="btn btn-sm btn-success" action="#{language.changeLanguage('de')}" value="DE" />
+			<h:commandButton styleClass="btn btn-sm btn-success" action="#{language.changeLanguage('en')}" value="EN" />
+		</div>
 	</h:form>
 
 </html>

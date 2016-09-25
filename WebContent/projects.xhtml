@@ -14,26 +14,26 @@
 			<h:messages errorClass="error-list" globalOnly="true"/>
 			&nbsp;
 			<h:form class="form-bg">
-				<h:outputLabel value="Projekt hinzufügen"/>
-				<h:inputText value="#{currentProject.name}" pt:placeholder="Bitte Name eingeben" styleClass="elem-inline"/>
-				<h:commandButton class="btn btn-sm btn-success" action="#{ projectHandler.addProject() }" value="Speichern" />
+				<h:outputLabel value="#{msg['add-project']}"/>
+				<h:inputText value="#{currentProject.name}" pt:placeholder="#{msg['name-hint']}" styleClass="elem-inline"/>
+				<h:commandButton class="btn btn-sm btn-success" action="#{ projectHandler.addProject() }" value="#{msg['save']}" />
 			</h:form>
 			&nbsp;
-			<h3>Gespeicherte Projekte</h3>
+			<h3>#{msg['projects']}</h3>
 			<h:dataTable var="project" value="#{projectHandler.projects}" columnClasses="varwidth,varwidth,width-100-px">
 				<h:column>
-					<f:facet name="header">ID</f:facet>
+					<f:facet name="header">#{msg['id']}</f:facet>
 					<div>#{project.id}</div>
 				</h:column>
 				<h:column>
-					<f:facet name="header">Projekt</f:facet>
+					<f:facet name="header">#{msg['project']}</f:facet>
 					<div>#{project.name}</div>
 				</h:column>
 				<h:column>
-					<f:facet name="header">Aktionen</f:facet>
+					<f:facet name="header">#{msg['actions']}</f:facet>
 					<div>
 						<h:form>
-							<h:commandButton id="delete_btn" class="btn-sm btn-danger" action="#{projectHandler.deleteProject(project)}" value="Löschen"/>					
+							<h:commandButton id="delete_btn" class="btn-sm btn-danger" action="#{projectHandler.deleteProject(project)}" value="#{msg['delete']}"/>					
 						</h:form>
 					</div>
 				</h:column>
