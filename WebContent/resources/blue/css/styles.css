@@ -7,7 +7,7 @@
 	right: 0px;
 	height: 60px;
 	line-height: 60px;
-	padding: 0px 20% 0px 20%;
+	padding: 0px 15% 0px 15%;
 	background-color: #22335f;
 	color: #ddd;
 }
@@ -18,7 +18,7 @@
 	bottom: 50px;
 	left: 0px;
 	right: 0px;
-	padding: 0px 20% 0px 20%;
+	padding: 0px 15% 0px 15%;
 	overflow: auto;
 }
 
@@ -29,7 +29,7 @@
 	bottom: 0px;
 	left: 0px;
 	right: 0px;
-	padding: 0px 20% 0px 20%;
+	padding: 0px 15% 0px 15%;
 	background-color: #22335f;
 	color: white;
 }
@@ -81,9 +81,9 @@ textarea {
 }
 
 .btn-sm {
-    width: 150px;
+    width: auto;
     color: white;
-    padding: 2px;
+    padding: 3px 7px;
     margin: 0px 5px;
     border: none;
     border-radius: 4px;

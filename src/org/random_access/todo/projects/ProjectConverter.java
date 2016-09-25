@@ -1,5 +1,6 @@
-package org.random_access.todo.model;
+package org.random_access.todo.projects;
 
+import javax.enterprise.inject.spi.CDI;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -9,25 +10,24 @@ import javax.inject.Named;
 @FacesConverter("ProjectConverter")
 @Named
 public class ProjectConverter implements Converter {
+	
+	private ProjectHandler projectHandler;
+	
+	public ProjectConverter() {
+		// can't inject CDI beans into FacesConverter
+		// See: http://stackoverflow.com/questions/7531449/cdi-injection-into-a-facesconverter
+		this.projectHandler = CDI.current().select(ProjectHandler.class).get();
+	}
+	
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
-		return Project.valueOf(Project.class, value);
+		return projectHandler.getProject(Integer.parseInt(value));
 	}
 
 	@Override
 	public String getAsString(FacesContext context, UIComponent component, Object value) {
-		Project project = (Project) value;
-		switch(project) {
-			case personal:
-				return "Privat";
-			case uni:
-				return "Uni";
-			case work:
-				return "Arbeit";
-			default:
-				return "Unbekannt";
-		}
+		return String.valueOf(((Project) value).getId());
 	}
 
 }

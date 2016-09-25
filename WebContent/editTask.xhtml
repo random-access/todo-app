@@ -7,15 +7,17 @@
       xmlns:jsf="http://xmlns.jcp.org/jsf">
       
 <ui:composition template="/template.xhtml">
+
 	<ui:define name="metadata">
 		<f:metadata>
-			<f:viewParam name="id" value="#{TaskBean.id}" />
-		    <f:viewParam name="name" value="#{TaskBean.name}" />
-		    <f:viewParam name="description" value="#{TaskBean.description}" />
-		    <f:viewParam name="project" value="#{TaskBean.project}" />
+			<f:viewParam name="id" value="#{currentTask.id}" />
+			<f:viewParam name="name" value="#{currentTask.name}" />
+			<f:viewParam name="description" value="#{currentTask.description}" />
+			<f:viewParam name="project" value="#{currentTask.project}" converter="ProjectConverter" />
 		</f:metadata>
 	</ui:define>
-	
+
+
 	<ui:define name="top">
 		<ui:include src="/navigation.xhtml" />
 	</ui:define>
@@ -23,23 +25,25 @@
 	<ui:define name="center">
 		<h2>Task bearbeiten:</h2>
 		<h:form class="form-bg"> 
-			<h:outputLabel value="ID: #{TaskBean.id}"/>
+			<h:outputLabel value="#{currentTask.id}"/>
 			&nbsp;
 		
 			<h:outputLabel value="Name" for="name" />
-			<h:inputText id="name" value="#{TaskBean.name}" pt:placeholder="Bitte Name eingeben"/>
+			<h:inputText id="name" value="#{currentTask.name}" pt:placeholder="Bitte Name eingeben"/>
 			<h:message for="name" errorClass="status-block"/>
 			
 			<h:outputLabel value="Beschreibung" for="description" />
-			<h:inputTextarea id="description" value="#{TaskBean.description}" pt:placeholder="Bitte Beschreibung eingeben" />
+			<h:inputTextarea id="description" value="#{currentTask.description}" pt:placeholder="Bitte Beschreibung eingeben" />
 			<h:message for="description" errorClass="status-block"/>
 			
 			<h:outputLabel value="Projekt" for="project" />
-			<h:selectOneMenu id="project" value="#{TaskBean.project}">
-				<f:selectItems value="#{TaskController.projects}"></f:selectItems>
+			<h:selectOneMenu id="project" value="#{currentTask.project}" converter="ProjectConverter">
+				<f:selectItems value="#{projectHandler.getProjectSelection()}"></f:selectItems>
 			</h:selectOneMenu>
+			<h:message for="project" errorClass="status-block"/>
+			
 			<div style="text-align: center; padding-top: 10px">
-				<h:commandButton class="btn btn-success" action="#{ TaskController.updateDiesenVerficktenTask() }" value="Speichern" />
+				<h:commandButton class="btn btn-success" action="#{ taskHandler.updateTask(currentTask) }" value="Speichern" />
 			</div>
 		</h:form>
 	</ui:define>
