@@ -1,0 +1,27 @@
+
+# /
+/build
+/.classpath
+/.project
+/.settings
+/.metadata
+/.recommenders
+/RemoteSystemTempFiles
+/.tern-project
+/*.jar
+/*.war
+/*.ear
+/*.tmp
+/*.bak
+/*.swp
+/*.launch
+/*/*/.faces-config.xml.jsfdia
+
+# /WebContent/
+/WebContent/build
+
+# /WebContent/WEB-INF/
+/WebContent/WEB-INF/*.jsfdia
+
+# /src/
+/src/build
