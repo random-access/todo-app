@@ -10,15 +10,23 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 import org.random_access.todo.tasks.Task;
 
 @Named("currentProject")
 @ConversationScoped
+
 @Entity
 @Table(name = "projects")
+
+@NamedQueries({
+	@NamedQuery(name="find_all_projects", query="SELECT p FROM Project p")
+})
 public class Project implements Serializable {
 
 	private static final long serialVersionUID = -7763528038991406963L;
@@ -31,6 +39,9 @@ public class Project implements Serializable {
 	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="project")
 	private List<Task> tasks;
+	
+	@Version
+	private int version;
 
 	public int getId() {
 		return id;

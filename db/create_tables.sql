@@ -6,7 +6,8 @@ DROP table if exists projects;
 CREATE TABLE projects (
 	id int(11) NOT NULL AUTO_INCREMENT,
     name varchar(255) DEFAULT NULL,
-    PRIMARY KEY(id)
+    PRIMARY KEY(id),
+    version int(11) NOT NULL DEFAULT 0
 )   ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Create tasks table
@@ -15,6 +16,7 @@ CREATE TABLE tasks (
     name varchar(255) DEFAULT NULL,
     description varchar(255) DEFAULT NULL,
     project int(11) NOT NULL,
+	version int(11) NOT NULL DEFAULT 0,
     PRIMARY KEY(id),
 	FOREIGN KEY (project)
         REFERENCES projects(id)

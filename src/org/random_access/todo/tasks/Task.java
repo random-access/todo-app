@@ -10,14 +10,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 import org.random_access.todo.projects.Project;
 
 @Named("currentTask")
 @ConversationScoped
+
 @Entity
 @Table(name = "tasks")
+
+@NamedQueries({
+	@NamedQuery(name="find_all_tasks", query="SELECT t FROM Task t")
+})
 public class Task implements Serializable {
 
 	private static final long serialVersionUID = -3921883190512551720L;
@@ -29,6 +37,9 @@ public class Task implements Serializable {
 	private String name;
 	
 	private String description;
+	
+	@Version
+	private int version;
 	
 	@ManyToOne
 	@JoinColumn(name = "project")

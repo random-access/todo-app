@@ -18,7 +18,7 @@ public class TaskManager {
 	}
 	
 	public List<Task> getTasks() {
-		TypedQuery<Task>  query = em.createQuery("from Task", Task.class);
+		TypedQuery<Task>  query = em.createNamedQuery("find_all_tasks", Task.class);
 		return query.getResultList();
 	}
 	

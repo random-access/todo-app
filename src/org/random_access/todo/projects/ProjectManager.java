@@ -18,7 +18,7 @@ public class ProjectManager {
 	}
 	
 	public List<Project> getProjects() {
-		TypedQuery<Project> query = em.createQuery("from Project", Project.class);
+		TypedQuery<Project> query = em.createNamedQuery("find_all_projects", Project.class);
 		return query.getResultList();
 	}
 	
