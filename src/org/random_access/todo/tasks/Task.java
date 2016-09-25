@@ -20,7 +20,7 @@ import org.random_access.todo.projects.Project;
 @Table(name = "tasks")
 public class Task implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -3921883190512551720L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,15 +34,6 @@ public class Task implements Serializable {
 	@JoinColumn(name = "project")
 	private Project project;
 	
-	public Task() {}
-	
-	public Task(int id, String name, String description, Project project) {
-		this.id = id;
-		this.name = name;
-		this.description = description;
-		this.project = project;
-	}
-
 	public String getName() {
 		return name;
 	}

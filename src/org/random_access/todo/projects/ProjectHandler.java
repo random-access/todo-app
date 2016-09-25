@@ -13,7 +13,7 @@ import javax.inject.Named;
 @ApplicationScoped
 public class ProjectHandler implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -5826428036095257366L;
 	
 	@EJB
 	private ProjectManager manager;
@@ -23,7 +23,11 @@ public class ProjectHandler implements Serializable {
 		return manager.getProjects();
 	}
 
-	
+	/**
+	 * Finds a project by its ID and returns it.
+	 * @param id project id
+	 * @return the project, if a project with that ID exists
+	 */
 	public Project getProject(int id) {
 		return manager.getProject(id);
 	}

@@ -12,8 +12,8 @@ import javax.inject.Named;
 @ApplicationScoped
 public class TaskHandler implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = -6208794536836495365L;
+
 	@Inject
 	private Task currentTask;
 	
