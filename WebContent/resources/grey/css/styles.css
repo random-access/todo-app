@@ -48,21 +48,21 @@
 	color: white;
 }
 
-input, select { 
-    padding: 12px 20px;   
+input, select {    
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
 }
 
 .elem-fullwidth {
+	padding: 12px 20px;
 	margin: 10px 0;
 	width: 100%;
 	display: inline-block;
 }
 
 .elem-inline {
-	margin: 10px 20px;
+	padding: 6px 10px;
 	width: 300px;
 	display: inline;
 }

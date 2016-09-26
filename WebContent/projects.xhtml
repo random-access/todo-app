@@ -15,7 +15,9 @@
 			&nbsp;
 			<h:form class="form-bg">
 				<h:outputLabel value="#{msg['add-project']}"/>
+				&nbsp;
 				<h:inputText value="#{currentProject.name}" pt:placeholder="#{msg['name-hint']}" styleClass="elem-inline"/>
+				&nbsp;
 				<h:commandButton class="btn btn-sm btn-success" action="#{ projectHandler.addProject() }" value="#{msg['save']}" />
 			</h:form>
 			&nbsp;
