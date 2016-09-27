@@ -1,17 +1,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
 	<h:form>
-		<h:outputText class="branding" value="TODO APP" />
-		<h:outputLink class="menu-entry" value="index.jsf">#{msg['tasks']}</h:outputLink>
-		<h:outputLink class="menu-entry" value="projects.jsf">#{msg['projects']}</h:outputLink>
-		<div style="float:right;">
-			<h:commandButton styleClass="btn btn-sm btn-success" action="#{language.changeLanguage('de')}" value="DE" />
-			<h:commandButton styleClass="btn btn-sm btn-success" action="#{language.changeLanguage('en')}" value="EN" />
-		</div>
+		<p:menubar styleClass="disable-scroll">
+			<p:menuitem value="#{msg['tasks']}" url="index.jsf"/>
+			<p:menuitem value="#{msg['projects']}" url="projects.jsf"/>
+			<f:facet name="options">
+				<p:commandButton styleClass="btn btn-sm btn-success" ajax="false" action="#{language.changeLanguage('de')}" value="DE" />
+				<p:commandButton styleClass="btn btn-sm btn-success" ajax="false" action="#{language.changeLanguage('en')}" value="EN" />
+			</f:facet>
+		</p:menubar>
 	</h:form>
 
 </html>

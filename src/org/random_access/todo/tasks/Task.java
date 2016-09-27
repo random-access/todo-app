@@ -14,7 +14,9 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Version;
+import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.random_access.todo.projects.Project;
 
 @Named("currentTask")
@@ -33,9 +35,11 @@ public class Task implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
+	@NotEmpty
 	private String name;
 	
+	@NotEmpty
 	private String description;
 	
 	@Version

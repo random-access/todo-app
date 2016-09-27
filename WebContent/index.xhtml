@@ -1,52 +1,53 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:jsf="http://xmlns.jcp.org/jsf">
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:p="http://primefaces.org/ui">
 
 	<ui:composition template="/template.xhtml">
 		<ui:define name="top">
 			<ui:include src="/navigation.xhtml" />
 		</ui:define>
 		<ui:define name="center">
-			<h:dataTable var="task" value="#{taskHandler.tasks}" columnClasses="varwidth,varwidth,varwidth,varwidth,width-200-px">
-				<h:column>
+			<p:dataTable id="tasktable" var="task" value="#{taskHandler.tasks}" columnClasses="varwidth,varwidth,varwidth,varwidth,width-200-px">
+				<p:column>
 					<f:facet name="header">#{msg['id']}</f:facet>
 					<div>#{task.id}</div>
-				</h:column>
-				<h:column>
+				</p:column>
+				<p:column>
 					<f:facet name="header">#{msg['task']}</f:facet>
 					<div>#{task.name}</div>
-				</h:column>
-				<h:column>
+				</p:column>
+				<p:column>
 					<f:facet name="header">#{msg['description']}</f:facet>
 					<div>#{task.description}</div>
-				</h:column>
-				<h:column>
+				</p:column>
+				<p:column>
 					<f:facet name="header">#{msg['project']}</f:facet>
 					<div>#{task.project.name}</div>
-				</h:column>
-				<h:column>
+				</p:column>
+				<p:column>
 					<f:facet name="header">#{msg['actions']}</f:facet>
 					<div>
 						<h:form>
 							<!-- must work somehow as post request... needs improvement -->
-							<h:button class="btn-sm btn-success" outcome="edit" value="#{msg['edit']}">
+							<p:button icon="fa fa-pencil" outcome="edit" value="#{msg['edit']}">
 								<f:param name="id" value="#{task.id}"/>
 								<f:param name="name" value="#{task.name}"/>
 								<f:param name="description" value="#{task.description}"/>
 								<f:param name="project" value="#{task.project.id}"/>
-							</h:button>
-							<h:commandButton class="btn-sm btn-danger" action="#{taskHandler.deleteTask(task)}" value="#{msg['delete']}"/>					
+							</p:button>
+							<p:commandButton icon="fa fa-trash" update="tasktable growl" actionListener="#{taskHandler.deleteTask(task)}" value="#{msg['delete']}"/>					
 						</h:form>
 					</div>
-				</h:column>
-			</h:dataTable>
+				</p:column>
+			</p:dataTable>
 			<h:form>
-				<div style="text-align: center; padding-bottom: 20px;">
-					<h:button class="btn btn-success" outcome="add" value="#{msg['add-task']}"/>
+				<div style="text-align: center;  padding: 15px;">
+					<p:button icon="fa fa-plus" outcome="add" value="#{msg['add-task']}" styleClass="btn-default"/>
 				</div>
 			</h:form>
 		</ui:define>

@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+
+.disable-scroll .ui-dialog-content {
+  overflow: hidden !important;
+}
+
+.ui-layout-pane {
+    border: 0;
+}

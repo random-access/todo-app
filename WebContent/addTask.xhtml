@@ -1,10 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:jsf="http://xmlns.jcp.org/jsf">
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:p="http://primefaces.org/ui">
       
 <ui:composition template="/template.xhtml">
 	<ui:define name="top">
@@ -12,27 +13,25 @@
 	</ui:define>
 	<ui:define name="center">
 		<h2>#{msg['add-task']}</h2>
-		<h:form class="form-bg">
-			<h:outputLabel value="#{msg['name']}" for="name" />
-			<h:inputText id="name" value="#{currentTask.name}" pt:placeholder="#{msg['name-hint']}" styleClass="elem-fullwidth"/>
-			<h:message for="name" errorClass="status-block"/>
-			
-			<h:outputLabel value="#{msg['description']}" for="description" />
-			<h:inputTextarea id="description" value="#{currentTask.description}" pt:placeholder="#{msg['description-hint']}" />
-			<h:message for="description" errorClass="status-block"/>
-			
-			<h:outputLabel value="#{msg['project']}" for="project" />
-			<h:selectOneMenu id="project" value="#{currentTask.project}" converter="ProjectConverter" styleClass="elem-fullwidth">
-				<f:selectItems value="#{projectHandler.getProjectSelection()}"></f:selectItems>
-			</h:selectOneMenu>
-			<h:message for="project" errorClass="status-block"/>
-			
-			<div style="text-align: center; padding-top: 10px">
-				<h:button class="btn btn-danger" outcome="add_abort" value="#{msg['abort']}" />
-				&nbsp;
-				<h:commandButton class="btn btn-success" action="#{ taskHandler.addTask() }" value="#{msg['save']}" />
-			</div>
-	
+		<h:form id="addtaskform">
+			<p:panelGrid columns="3" cellpadding="5">
+				<p:outputLabel value="#{msg['name']}" for="name" />
+				<p:inputText id="name" value="#{currentTask.name}" pt:placeholder="#{msg['name-hint']}"/>
+				<p:message for="name" display="text"/>
+				
+				<p:outputLabel value="#{msg['description']}" for="description" />
+				<p:inputTextarea cols="50" rows="10" id="description" value="#{currentTask.description}" pt:placeholder="#{msg['description-hint']}" />
+				<p:message for="description" display="text"/>
+				
+				<p:outputLabel value="#{msg['project']}" for="project" />
+				<p:selectOneMenu id="project" value="#{currentTask.project}" converter="ProjectConverter">
+					<f:selectItems value="#{projectHandler.getProjectSelection()}"></f:selectItems>
+				</p:selectOneMenu>
+				<p:message for="project" display="text"/>
+
+				<p:button outcome="add_abort" value="#{msg['abort']}" icon="fa fa-times"/>
+				<p:commandButton action="#{ taskHandler.addTask() }" icon="fa fa-check" value="#{msg['save']}" update="addtaskform growl" />
+			</p:panelGrid>
 		</h:form>
 	</ui:define>
 	<ui:define name="bottom">© 2016 Monika Schrenk</ui:define>

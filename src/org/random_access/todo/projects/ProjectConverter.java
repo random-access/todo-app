@@ -22,12 +22,12 @@ public class ProjectConverter implements Converter {
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
-		return projectHandler.getProject(Integer.parseInt(value));
+		return value == null || value.length() == 0 ? null : projectHandler.getProject(Integer.parseInt(value));
 	}
 
 	@Override
 	public String getAsString(FacesContext context, UIComponent component, Object value) {
-		return String.valueOf(((Project) value).getId());
+		return value == null ? "" : String.valueOf(((Project) value).getId());
 	}
 
 }
