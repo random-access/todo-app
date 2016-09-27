@@ -7,3 +7,31 @@
 .ui-layout-pane {
     border: 0;
 }
+
+.ui-widget-header .ui-inputfield, .ui-widget-content .ui-inputfield {
+    min-width: 430px;
+    height: 35px;
+    padding: 5px;
+}
+
+.ui-datatable tbody td {
+	height: 35px;
+}
+
+.ui-selectonemenu label.ui-selectonemenu-label {
+	height: auto;
+}
+
+.bordered-form {
+	border: 1px solid grey;
+	border-radius: 3px;
+	padding: 10px;
+}
+
+.ui-widget-content {
+	border: none;
+}
+
+.ui-panelgrid .ui-panelgrid-cell {
+	border: none;
+}

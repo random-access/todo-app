@@ -13,8 +13,8 @@
 	</ui:define>
 	<ui:define name="center">
 		<h2>#{msg['add-task']}</h2>
-		<h:form id="addtaskform">
-			<p:panelGrid columns="3" cellpadding="5">
+		<h:form id="addtaskform" style="padding: 10px;">
+			<p:panelGrid columns="3" cellpadding="10" class="bordered-form">
 				<p:outputLabel value="#{msg['name']}" for="name" />
 				<p:inputText id="name" value="#{currentTask.name}" pt:placeholder="#{msg['name-hint']}"/>
 				<p:message for="name" display="text"/>
@@ -31,7 +31,9 @@
 
 				<p:button outcome="add_abort" value="#{msg['abort']}" icon="fa fa-times"/>
 				<p:commandButton action="#{ taskHandler.addTask() }" icon="fa fa-check" value="#{msg['save']}" update="addtaskform growl" />
+				<p:outputLabel></p:outputLabel>
 			</p:panelGrid>
+
 		</h:form>
 	</ui:define>
 	<ui:define name="bottom">© 2016 Monika Schrenk</ui:define>

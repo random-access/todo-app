@@ -11,17 +11,17 @@
 		<ui:define name="top">
 			<ui:include src="/navigation.xhtml" />
 		</ui:define>
+		
 		<ui:define name="center">
-			<h:messages globalOnly="true"/>
-			&nbsp;
-			<h:form id="add-project-form">
-				<p:outputLabel value="#{msg['add-project']}"/>
-				&nbsp;
-				<p:inputText value="#{currentProject.name}" pt:placeholder="#{msg['name-hint']}" styleClass="elem-inline"/>
-				&nbsp;
-				<p:commandButton action="#{ projectHandler.addProject() }" update="add-project-form show-projects-form growl" value="#{msg['save']}" />
-			</h:form>
-			&nbsp;
+		
+			<p:panel header="#{msg['add-project']}">
+				<h:form id="add-project-form">
+					<p:outputLabel value="#{msg['project']}" styleClass="margin: 10px;"/>
+					<p:inputText value="#{currentProject.name}" pt:placeholder="#{msg['name-hint']}" styleClass="margin 10px; width: 250px;"/>							
+					<p:commandButton action="#{ projectHandler.addProject() }" update="add-project-form show-projects-form growl" value="#{msg['save']}" styleClass="margin: 10px;"/>						
+				</h:form>
+			</p:panel>
+
 			<h3>#{msg['projects']}</h3>
 			<h:form id="show-projects-form">
 				<p:dataTable var="project" value="#{projectHandler.projects}">
