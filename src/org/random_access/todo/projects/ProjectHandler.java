@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.model.SelectItem;
@@ -26,16 +27,24 @@ public class ProjectHandler implements Serializable {
 	
 	@EJB
 	private ProjectManager manager;
+	
+	private List<Project> projects;
+	
+	@PostConstruct
+	private void loadProjects() {
+		this.projects = manager.getProjects();
+	}
 
 	public String addProject(){
 		// currentProject needs to be cloned because JPA cannot handle proxies
 		manager.save(currentProject.cloneProject());
+		loadProjects();
 		messages.showInfo("success", "success-adding-project");
 		return "add_success";
 	}
 
 	public List<Project> getProjects() {
-		return manager.getProjects();
+		return projects;
 	}
 
 	public Project getProject(int id) {
@@ -45,16 +54,17 @@ public class ProjectHandler implements Serializable {
 	public void deleteProject(Project project) {
 		try {
 			manager.remove(project);
+			loadProjects();
 			messages.showInfo("success", "success-removing-project");
 		} catch (ProjectException e) {
 			messages.showError("error", "error-removing-project");
 		}
 	}
 
-	public String updateProject(Project project) {
-		manager.update(project);
-		return "upd_success";
-	}
+//	public String updateProject(Project project) {
+//		manager.update(project);
+//		return "upd_success";
+//	}
 	
 	// Get projects as list of SelectItem for dropdowns,...
 	public List<SelectItem> getProjectSelection() {

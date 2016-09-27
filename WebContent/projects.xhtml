@@ -14,37 +14,31 @@
 		<ui:define name="center">
 			<h:messages globalOnly="true"/>
 			&nbsp;
-			<h:form id="addprojectform">
+			<h:form id="add-project-form">
 				<p:outputLabel value="#{msg['add-project']}"/>
 				&nbsp;
 				<p:inputText value="#{currentProject.name}" pt:placeholder="#{msg['name-hint']}" styleClass="elem-inline"/>
 				&nbsp;
-				<p:commandButton action="#{ projectHandler.addProject() }" update="addprojectform project-table growl" value="#{msg['save']}" />
+				<p:commandButton action="#{ projectHandler.addProject() }" update="add-project-form show-projects-form growl" value="#{msg['save']}" />
 			</h:form>
 			&nbsp;
 			<h3>#{msg['projects']}</h3>
-			<p:dataTable id="project-table" var="project" value="#{projectHandler.projects}">
-				<p:column>
-					<f:facet name="header">#{msg['id']}</f:facet>
-					<div>#{project.id}</div>
-				</p:column>
-				<p:column>
-					<f:facet name="header">#{msg['project']}</f:facet>
-					<div>#{project.name}</div>
-				</p:column>
-				<p:column>
-					<f:facet name="header">#{msg['tasks']}</f:facet>
-					<div>#{project.tasks.size()}</div>
-				</p:column>
-				<p:column>
-					<f:facet name="header">#{msg['actions']}</f:facet>
-					<div>
-						<h:form rendered="#{project.tasks.size() == 0}">
-							<p:commandButton id="delete_btn" icon="fa fa-times" action="#{projectHandler.deleteProject(project)}" update="project-table growl" value="#{msg['delete']}"/>					
-						</h:form>
-					</div>
-				</p:column>
-			</p:dataTable>
+			<h:form id="show-projects-form">
+				<p:dataTable var="project" value="#{projectHandler.projects}">
+					<p:column headerText="#{msg['id']}" sortBy="#{project.id}">
+						<h:outputText value="#{project.id}" />
+					</p:column>
+					<p:column headerText="#{msg['project']}" sortBy="#{project.name}">
+						<h:outputText value="#{project.name}" />
+					</p:column>
+					<p:column headerText="#{msg['tasks']}" sortBy="#{project.tasks.size()}">
+						<h:outputText value="#{project.tasks.size()}" />
+					</p:column>
+					<p:column headerText="#{msg['actions']}">
+						<p:commandButton id="delete_btn" rendered="#{project.tasks.size() == 0}" icon="fa fa-times" action="#{projectHandler.deleteProject(project)}" update="show-projects-form growl" value="#{msg['delete']}"/>					
+					</p:column>
+				</p:dataTable>
+			</h:form>
 		</ui:define>
 	</ui:composition>
 </html>
