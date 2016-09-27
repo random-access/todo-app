@@ -12,27 +12,22 @@
 			<ui:include src="/navigation.xhtml" />
 		</ui:define>
 		<ui:define name="center">
-			<p:dataTable id="tasktable" var="task" value="#{taskHandler.tasks}" columnClasses="varwidth,varwidth,varwidth,varwidth,width-200-px">
-				<p:column>
-					<f:facet name="header">#{msg['id']}</f:facet>
-					<div>#{task.id}</div>
-				</p:column>
-				<p:column>
-					<f:facet name="header">#{msg['task']}</f:facet>
-					<div>#{task.name}</div>
-				</p:column>
-				<p:column>
-					<f:facet name="header">#{msg['description']}</f:facet>
-					<div>#{task.description}</div>
-				</p:column>
-				<p:column>
-					<f:facet name="header">#{msg['project']}</f:facet>
-					<div>#{task.project.name}</div>
-				</p:column>
-				<p:column>
-					<f:facet name="header">#{msg['actions']}</f:facet>
-					<div>
-						<h:form>
+			<h:form id="show-tasks-form">
+				<p:dataTable id="tasktable" var="task" value="#{taskHandler.tasks}" columnClasses="varwidth,varwidth,varwidth,varwidth,width-200-px">
+					<p:column headerText="#{msg['id']}" sortBy="#{task.id}">
+						<h:outputText value="#{task.id}" />
+					</p:column>
+					<p:column headerText="#{msg['task']}" sortBy="#{task.name}">
+						<h:outputText value="#{task.name}" />
+					</p:column>
+					<p:column headerText="#{msg['description']}" sortBy="#{task.description}">
+						<h:outputText value="#{task.description}" />
+					</p:column>
+					<p:column headerText="#{msg['project']}" sortBy="#{task.project.name}">
+						<h:outputText value="#{task.project.name}" />
+					</p:column>
+					<p:column headerText="#{msg['actions']}">
+						<div>
 							<!-- must work somehow as post request... needs improvement -->
 							<p:button icon="fa fa-pencil" outcome="edit" value="#{msg['edit']}">
 								<f:param name="id" value="#{task.id}"/>
@@ -40,14 +35,14 @@
 								<f:param name="description" value="#{task.description}"/>
 								<f:param name="project" value="#{task.project.id}"/>
 							</p:button>
-							<p:commandButton icon="fa fa-trash" update="tasktable growl" actionListener="#{taskHandler.deleteTask(task)}" value="#{msg['delete']}"/>					
-						</h:form>
-					</div>
-				</p:column>
-			</p:dataTable>
-			<h:form>
+							<p:commandButton icon="fa fa-trash" update="show-tasks-form growl" actionListener="#{taskHandler.deleteTask(task)}" value="#{msg['delete']}"/>					
+						</div>
+					</p:column>
+				</p:dataTable>
+			</h:form>
+			<h:form id="add-tasks-form">
 				<div style="text-align: center;  padding: 15px;">
-					<p:button icon="fa fa-plus" outcome="add" value="#{msg['add-task']}" styleClass="btn-default"/>
+					<p:button icon="fa fa-plus" outcome="add" value="#{msg['add-task']}"/>
 				</div>
 			</h:form>
 		</ui:define>

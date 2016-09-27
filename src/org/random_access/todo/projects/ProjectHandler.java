@@ -5,9 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.enterprise.context.ApplicationScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -15,7 +13,7 @@ import javax.inject.Named;
 import org.random_access.todo.internationalization.MessagesBean;
 
 @Named
-@ApplicationScoped
+@SessionScoped
 public class ProjectHandler implements Serializable {
 
 	private static final long serialVersionUID = -5826428036095257366L;
@@ -49,7 +47,6 @@ public class ProjectHandler implements Serializable {
 			manager.remove(project);
 			messages.showInfo("success", "success-removing-project");
 		} catch (ProjectException e) {
-			FacesMessage msg = new FacesMessage(e.getMessage());
 			messages.showError("error", "error-removing-project");
 		}
 	}
