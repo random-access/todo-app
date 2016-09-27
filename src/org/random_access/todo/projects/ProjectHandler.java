@@ -12,6 +12,8 @@ import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.random_access.todo.internationalization.MessagesBean;
+
 @Named
 @ApplicationScoped
 public class ProjectHandler implements Serializable {
@@ -21,12 +23,16 @@ public class ProjectHandler implements Serializable {
 	@Inject
 	private Project currentProject;
 	
+	@Inject
+	private MessagesBean messages;
+	
 	@EJB
 	private ProjectManager manager;
 
 	public String addProject(){
 		// currentProject needs to be cloned because JPA cannot handle proxies
 		manager.save(currentProject.cloneProject());
+		messages.showInfo("success", "success-adding-project");
 		return "add_success";
 	}
 
@@ -41,10 +47,10 @@ public class ProjectHandler implements Serializable {
 	public void deleteProject(Project project) {
 		try {
 			manager.remove(project);
+			messages.showInfo("success", "success-removing-project");
 		} catch (ProjectException e) {
 			FacesMessage msg = new FacesMessage(e.getMessage());
-			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
-			FacesContext.getCurrentInstance().addMessage(null, msg);
+			messages.showError("error", "error-removing-project");
 		}
 	}
 

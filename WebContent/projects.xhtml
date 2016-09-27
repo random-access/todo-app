@@ -19,7 +19,7 @@
 				&nbsp;
 				<p:inputText value="#{currentProject.name}" pt:placeholder="#{msg['name-hint']}" styleClass="elem-inline"/>
 				&nbsp;
-				<p:commandButton action="#{ projectHandler.addProject() }" update="addprojectform project-table" value="#{msg['save']}" />
+				<p:commandButton action="#{ projectHandler.addProject() }" update="addprojectform project-table growl" value="#{msg['save']}" />
 			</h:form>
 			&nbsp;
 			<h3>#{msg['projects']}</h3>
@@ -40,7 +40,7 @@
 					<f:facet name="header">#{msg['actions']}</f:facet>
 					<div>
 						<h:form rendered="#{project.tasks.size() == 0}">
-							<p:commandButton id="delete_btn" icon="fa fa-times" action="#{projectHandler.deleteProject(project)}" update="project-table" value="#{msg['delete']}"/>					
+							<p:commandButton id="delete_btn" icon="fa fa-times" action="#{projectHandler.deleteProject(project)}" update="project-table growl" value="#{msg['delete']}"/>					
 						</h:form>
 					</div>
 				</p:column>
